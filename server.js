@@ -3,6 +3,8 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const app = require('./app');
 
+const Celebrity = require('./models/celebrity');
+
 const MONGODB_URI = process.env.MONGODB_URI;
 const PORT = process.env.PORT;
 
