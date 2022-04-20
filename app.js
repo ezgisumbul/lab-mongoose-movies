@@ -35,10 +35,10 @@ const router = require('./routes/index');
 app.use('/', router);
 
 const celebrityRouter = require('./routes/celebrities');
-app.use('/', celebrityRouter);
+app.use('/celebrities', celebrityRouter);
 
 const movieRouter = require('./routes/movies');
-app.use('/', movieRouter);
+app.use('/movies', movieRouter);
 
 // Catch 404 and render a not-found.hbs template
 app.use((req, res, next) => {

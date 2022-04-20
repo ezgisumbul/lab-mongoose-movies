@@ -1,0 +1,16 @@
+
+
+  <h2>{{{movies.title}}}</h2>
+
+  <h4>{{{movies.genre}}}</h4>
+  <p4>{{{movies.plot}}}</h4>
+
+
+
+  <form action="/movies/{{movies._id}}/edit" method="GET">
+  <button>Edit</button>
+  </form>
+  
+  <form action="/movies/{{movies._id}}/delete" method="POST">
+  <button>Delete</button>
+  </form>

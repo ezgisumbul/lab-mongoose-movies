@@ -2,15 +2,7 @@ const express = require('express');
 const celebrityRouter = express.Router();
 const Celebrity = require('../models/celebrity');
 
-// Handle GET request for website root
 celebrityRouter.get('/', (req, res, next) => {
-  res.render('index');
-});
-
-// this to be moved to routes/celebrities.js but I couldn't
-// figure out how to set up a celebrityRouter there. Using this eported one
-// did not work either.
-celebrityRouter.get('/celebrities', (req, res, next) => {
   Celebrity.find()
     .then((celebrities) => {
       res.render('celebrities/index', { celebrities });
@@ -20,11 +12,11 @@ celebrityRouter.get('/celebrities', (req, res, next) => {
     });
 });
 
-celebrityRouter.get('/celebrities/create', (req, res, next) => {
+celebrityRouter.get('/create', (req, res, next) => {
   res.render('celebrities/create');
 });
 
-celebrityRouter.get('/celebrities/:id', (req, res, next) => {
+celebrityRouter.get('/:id', (req, res, next) => {
   const { id } = req.params; // id must be wrapped as an object because req.params is an object with a key called id. we are trying to use this key later on, and in a more shorter way
   // console.log(req.params);
   Celebrity.findById(id)
@@ -36,7 +28,7 @@ celebrityRouter.get('/celebrities/:id', (req, res, next) => {
     });
 });
 
-celebrityRouter.get('/celebrities/:id/edit', (req, res, next) => {
+celebrityRouter.get('/:id/edit', (req, res, next) => {
   const { id } = req.params;
 
   Celebrity.findById(id)
@@ -48,7 +40,7 @@ celebrityRouter.get('/celebrities/:id/edit', (req, res, next) => {
     });
 });
 
-celebrityRouter.post('/celebrities', (req, res, next) => {
+celebrityRouter.post('/', (req, res, next) => {
   // console.log(req.body);
 
   const { name, occupation, catchPhrase } = req.body;
@@ -74,7 +66,7 @@ celebrityRouter.post('/celebrities', (req, res, next) => {
     });
 });
 
-celebrityRouter.post('/celebrities/:id', (req, res, next) => {
+celebrityRouter.post('/:id', (req, res, next) => {
   const { name, occupation, catchPhrase } = req.body;
   const { id } = req.params;
 
@@ -88,7 +80,7 @@ celebrityRouter.post('/celebrities/:id', (req, res, next) => {
     });
 });
 
-celebrityRouter.post('/celebrities/:id/delete', (req, res, next) => {
+celebrityRouter.post('/:id/delete', (req, res, next) => {
   const { id } = req.params;
   Celebrity.findByIdAndRemove(id)
     .then(() => {

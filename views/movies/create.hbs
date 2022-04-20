@@ -1,0 +1,24 @@
+<h2>Add a movie</h2>
+
+<form action='/movies' method='POST'>
+  <label for='input-title'>Title</label>
+  <input
+    type='text'
+    placeholder='Once upon a time in a country'
+    name='title'
+    id='input-title'
+  />
+
+  <label for='input-genre'>Genre</label>
+  <input type='text' placeholder='e.g. Horror' name='genre' id='input-genre' />
+
+  <label for='input-plot'>Plot</label>
+  <textarea
+    name='plot'
+    id='input-plot'
+    placeholder='Write 2-3 sentence summary of the movie. No spoilers!'
+  ></textarea>
+
+  <button>Submit</button>
+
+</form>
